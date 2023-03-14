@@ -19,6 +19,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JLabel;
+
 
 public class MainFrame extends JFrame implements ActionListener{
 
@@ -26,7 +28,9 @@ public class MainFrame extends JFrame implements ActionListener{
     JButton greenButton;
     JButton blueButton;
     JButton exitButton;
+    JButton purpleButton;
     JPanel centerPanel;
+    JLabel jlFelirat;
 
     
     MainFrame() {
@@ -45,6 +49,10 @@ public class MainFrame extends JFrame implements ActionListener{
         // sorok, oszlopok:
         this.setLayout(new GridLayout(1, 1));
 
+        jlFelirat = new JLabel();
+        jlFelirat.setSize(150, 30);
+        jlFelirat.setText("Színcsere");
+
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         // mainPanel.setBackground(Color.PINK);
@@ -59,7 +67,11 @@ public class MainFrame extends JFrame implements ActionListener{
         JPanel northPanel = new JPanel();
         northPanel.setSize(30, 500);
         northPanel.setBackground(Color.yellow);
+        northPanel.setLayout(new FlowLayout( FlowLayout.CENTER));
         mainPanel.add(northPanel, BorderLayout.NORTH);
+        northPanel.add(jlFelirat);
+        
+
 
 
         JPanel easatPanel = new JPanel();
@@ -80,16 +92,19 @@ public class MainFrame extends JFrame implements ActionListener{
         redButton = new JButton("Piros");
         greenButton = new JButton("Zöld");
         blueButton = new JButton("Kék");
+        purpleButton = new JButton("Lila");
         exitButton = new JButton("Kilép");
 
         southPanel.add(redButton);
         southPanel.add(greenButton);
         southPanel.add(blueButton);
+        southPanel.add(purpleButton);
         southPanel.add(exitButton);
 
         redButton.addActionListener(this);
         greenButton.addActionListener(this);
         blueButton.addActionListener(this);
+        purpleButton.addActionListener(this);
         exitButton.addActionListener(this);
 
 
@@ -121,6 +136,8 @@ public class MainFrame extends JFrame implements ActionListener{
         } else if (event.getSource() == blueButton) {
             centerPanel.setBackground(Color.blue);
 
+        } else if (event.getSource() == purpleButton) {
+            centerPanel.setBackground(Color.MAGENTA);
         }
         
     }
