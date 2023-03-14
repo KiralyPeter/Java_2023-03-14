@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 
 // A panelek miatt:
 import javax.swing.JPanel;
-import javax.swing.event.AncestorListener;
+// import javax.swing.event.AncestorListener;
 
 // A BorderLayout miatt:
 import java.awt.BorderLayout;
@@ -22,6 +22,13 @@ import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame implements ActionListener{
 
+    JButton redButton;
+    JButton greenButton;
+    JButton blueButton;
+    JButton exitButton;
+    JPanel centerPanel;
+
+    
     MainFrame() {
 
         // ősostály meghívása
@@ -34,7 +41,7 @@ public class MainFrame extends JFrame implements ActionListener{
 
         this.setSize(500, 400);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
         // sorok, oszlopok:
         this.setLayout(new GridLayout(1, 1));
 
@@ -69,10 +76,10 @@ public class MainFrame extends JFrame implements ActionListener{
         mainPanel.add(southPanel, BorderLayout.SOUTH);
         
         // A southPanel-ra rakunk gombokat
-        JButton redButton = new JButton("Piros");
-        JButton greenButton = new JButton("Zöld");
-        JButton blueButton = new JButton("Kék");
-        JButton exitButton = new JButton("Kilép");
+        redButton = new JButton("Piros");
+        greenButton = new JButton("Zöld");
+        blueButton = new JButton("Kék");
+        exitButton = new JButton("Kilép");
 
         southPanel.add(redButton);
         southPanel.add(greenButton);
@@ -85,8 +92,8 @@ public class MainFrame extends JFrame implements ActionListener{
         exitButton.addActionListener(this);
 
 
-
-        JPanel centerPanel = new JPanel();
+        // Center
+        centerPanel = new JPanel();
         centerPanel.setBackground(Color.LIGHT_GRAY);
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
@@ -99,6 +106,21 @@ public class MainFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent event) {
 
+        // Melyik gobról érkezett az aktuális action?
+        // Ez így hivatalosan ronda...
+        if(event.getSource() == exitButton){
+            System.exit(0);
+        } else if (event.getSource() == redButton) {
+            // setRed(); lenne a szép...
+            centerPanel.setBackground(Color.red);
+
+        } else if (event.getSource() == greenButton) {
+            centerPanel.setBackground(Color.green);
+
+        } else if (event.getSource() == blueButton) {
+            centerPanel.setBackground(Color.blue);
+
+        }
         
     }
 }
