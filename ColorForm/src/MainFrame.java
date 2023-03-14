@@ -1,7 +1,9 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 // A panelek miatt:
 import javax.swing.JPanel;
+import javax.swing.event.AncestorListener;
 
 // A BorderLayout miatt:
 import java.awt.BorderLayout;
@@ -12,8 +14,13 @@ import java.awt.GridLayout;
 // setBackground miatt (nem használjuk)
 import java.awt.Color;
 
+import java.awt.FlowLayout;
 
-public class MainFrame extends JFrame{
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class MainFrame extends JFrame implements ActionListener{
 
     MainFrame() {
 
@@ -39,31 +46,59 @@ public class MainFrame extends JFrame{
         JPanel westPanel = new JPanel();
         westPanel.setSize(30, 340);
         westPanel.setBackground(Color.yellow);
-
         // felrakjuk a mainPanelra és elhelyezzük:
         mainPanel.add(westPanel, BorderLayout.WEST);
 
         JPanel northPanel = new JPanel();
         northPanel.setSize(30, 500);
         northPanel.setBackground(Color.yellow);
-
         mainPanel.add(northPanel, BorderLayout.NORTH);
 
 
         JPanel easatPanel = new JPanel();
         easatPanel.setSize(30, 340);
         easatPanel.setBackground(Color.yellow);
-
         mainPanel.add(easatPanel, BorderLayout.EAST);
 
+
+        
         JPanel southPanel = new JPanel();
         southPanel.setSize(30, 500);
         southPanel.setBackground(Color.yellow);
-
+        southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         mainPanel.add(southPanel, BorderLayout.SOUTH);
+        
+        // A southPanel-ra rakunk gombokat
+        JButton redButton = new JButton("Piros");
+        JButton greenButton = new JButton("Zöld");
+        JButton blueButton = new JButton("Kék");
+        JButton exitButton = new JButton("Kilép");
+
+        southPanel.add(redButton);
+        southPanel.add(greenButton);
+        southPanel.add(blueButton);
+        southPanel.add(exitButton);
+
+        redButton.addActionListener(this);
+        greenButton.addActionListener(this);
+        blueButton.addActionListener(this);
+        exitButton.addActionListener(this);
+
+
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setBackground(Color.LIGHT_GRAY);
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+
 
 
 
     }
 
+    // nem kötelező, de javasolt az "@Override"
+    @Override
+    public void actionPerformed(ActionEvent event) {
+
+        
+    }
 }
