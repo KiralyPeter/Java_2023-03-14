@@ -3,6 +3,7 @@ public class ColorForm {
 
         MainFrame mainFrm = new MainFrame();
         
+        // láthatóvá tesszük a mainFrm-et
         mainFrm.setVisible(true); 
         
     }

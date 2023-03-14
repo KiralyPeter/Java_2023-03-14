@@ -72,6 +72,7 @@ public class MainFrame extends JFrame implements ActionListener{
         JPanel southPanel = new JPanel();
         southPanel.setSize(30, 500);
         southPanel.setBackground(Color.yellow);
+        // Középre igazított gombok (FlowLayout.CENTER)
         southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         mainPanel.add(southPanel, BorderLayout.SOUTH);
         
